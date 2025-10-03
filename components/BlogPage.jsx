@@ -1,11 +1,18 @@
 import React from 'react';
-import Layout from './Layout';
+import Card from './Card';
+import projects from '../src/utils/blogsDetails.json';
 
 const BlogPage = () => {
   return (
-    <Layout>
-      <div>BlogPage</div>
-    </Layout>
+    <>
+      <div className="blog-container">
+        <div className="blog-section-header">
+          <h1 className="blog-section-title">Blogs</h1>
+        </div>
+
+        <Card projects={projects} />
+      </div>
+    </>
   );
 };
 

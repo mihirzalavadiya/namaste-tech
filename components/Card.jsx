@@ -33,6 +33,7 @@ const Card = ({ projects, isDescription = true }) => {
                   </span>
                 )}
               </div>
+              {project?.date && <div className="blog-date">{project.date}</div>}
               {isDescription && (
                 <p className="card-description">{project.description}</p>
               )}
