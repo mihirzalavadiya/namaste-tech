@@ -3,6 +3,7 @@
 @import './componentsStyles/header.css';
 @import './componentsStyles/home.css';
 @import './componentsStyles/namstedev.css';
+@import './componentsStyles/projectDetail.css';
 :root {
   --background: #ffffff;
   --foreground: #171717;

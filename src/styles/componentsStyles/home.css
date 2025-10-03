@@ -104,6 +104,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 5px;
 }
 
 .tag {
@@ -114,6 +115,32 @@
   font-size: 12px;
   font-weight: 500;
   border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.compnies-tag {
+  background: rgba(59, 130, 246, 0.1);
+  color: #a060fa;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.question-category {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60fa68;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.card-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 
 /* Animation */

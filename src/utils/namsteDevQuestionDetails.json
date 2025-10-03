@@ -1,0 +1,31 @@
+{
+  "2e781703-598e-4863-9d51-9de485cbc21a": {
+    "problem": "Description\r\n\r\nIn this task, you are asked to create a Chips Input component that allows users to input a series of tags or keywords. The component will display these tags as \"chips\" (small labels), which users can add and remove dynamically.\r\n\r\nFeatures:\r\n\r\nInput Field: Users can type text into an input field.\r\n\r\nAdd Chips: When the user presses the \"Enter\" key, the typed text will be added as a new chip (tag). Empty or whitespace-only chips should not be added.\r\n\r\nRemove Chips: Users can delete a chip by clicking the \"X\" button next to it.\r\n\r\nHorizontal Display: The chips should be displayed in a horizontal list.\r\n\r\nPersistence: The list of chips should be maintained even when the component re-renders.\r\n\r\nImportant Points:\r\n\r\nThe input field should be of type text.\r\n\r\nButton should be labeled \"X\" to delete chips\r\n\r\nIf two chips have the same name, deleting one should NOT delete both.\r\n\r\nMake sure to use onKeyDown event handler instead of onKeyPress because onKeyPress is deprecated.",
+    "solution": "",
+    "code": "import React, { useState } from 'react';\nimport './styles.css';\n\nfunction ChipsInput() {\n  const [chips, setChips] = useState([]);\n  const [inputData, setInputData] = useState(\"\");\n\n  const keyDown = (e) => {\n    if (e.key === 'Enter') {\n      const data = inputData.trim();\n      if (data && !chips.includes(data)) {\n        setChips([...chips, data]);\n      }\n      setInputData(\"\");\n    }\n  };\n\n  const removeChip = (indexToRemove) => {\n    setChips(chips.filter((_, index) => index !== indexToRemove));\n  };\n\n  return (\n    <div style={{ display: \"flex\", flexDirection: \"column\", alignItems: \"center\", margin: \"40px 0\" }}>\n      <h2>Chips Input</h2>\n      <input\n        type=\"text\"\n        placeholder=\"Type a chip and press enter\"\n        value={inputData}\n        style={{ padding: \"8px\", width: \"200px\" }}\n        onChange={(e) => setInputData(e.target.value)}\n        onKeyDown={keyDown}\n      />\n      <div className=\"chips-container\">\n        {chips.map((chip, index) => (\n          <div key={index} className=\"chip\">\n            {chip}\n            <button onClick={() => removeChip(index)} className=\"deleteBtn\">X</button>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n\nexport default ChipsInput;",
+    "examples": []
+  },
+  "d4f6c8e2-1b4e-4c3a-9f3a-2c3e4b5f6a7b": {
+    "problem": "\r\nWrite a function that takes a sentence as input and returns a new sentence where the first letter of each word is capitalized, and the rest of the letters are in lowercase.\r\n\r\nInput: A string sentence containing one or more words separated by spaces.\r\nOutput: A new string where each word starts with an uppercase letter followed by lowercase letters.\r\n\r\nConstraints & Edge Cases\r\n\r\nInput may have multiple spaces between words.\r\n\r\nInput may contain uppercase, lowercase, or mixed-case characters.\r\n\r\nInput can be an empty string.\r\n\r\nWords can contain letters only; punctuation is not considered in this challenge.\r\n\r\nLeading/trailing spaces should be trimmed in the final result.",
+    "solution": "",
+    "code": "function capitalizeWords(sentence) {\n    // Your implementation\n    return sentence\n        .trim()\n        .split(/\\s+/)\n        .map(word =>\n            word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()\n        )\n        .join(\" \");\n}\n\n// For the purpose of user debugging.\ncapitalizeWords(\"hello world\");\nmodule.exports = capitalizeWords",
+    "examples": [
+      {
+        "input": "hello world",
+        "output": "Hello World"
+      },
+      {
+        "input": "javaScript is FUN",
+        "output": "Javascript Is Fun"
+      },
+      {
+        "input": " multiple  spaces  ",
+        "output": "Multiple Spaces"
+      },
+      {
+        "input": "",
+        "output": ""
+      }
+    ]
+  }
+}

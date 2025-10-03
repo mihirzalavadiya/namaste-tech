@@ -1,0 +1,30 @@
+[
+  {
+    "id": "2e781703-598e-4863-9d51-9de485cbc21a",
+    "title": "Chips Input",
+    "description": "Solution to all Namaste Dev problems with all test cases passed.",
+    "image": "https://do6gp1uxl3luu.cloudfront.net/question-gif/chipsInput.gif",
+    "tags": ["React JS"],
+    "category": ["Easy"],
+    "link": "/namastedev/2e781703-598e-4863-9d51-9de485cbc21a",
+    "compnies": ["Amazon", "Flipkart", "PhonePe"]
+  },
+  {
+    "id": "d4f6c8e2-1b4e-4c3a-9f3a-2c3e4b5f6a7b",
+    "title": "Capitalize Word",
+    "description": "Solution to all Namaste Dev problems with all test cases passed.",
+    "image": "",
+    "tags": ["JavaScript"],
+    "category": ["Easy"],
+    "link": "/namastedev/d4f6c8e2-1b4e-4c3a-9f3a-2c3e4b5f6a7b"
+  },
+  {
+    "id": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+    "title": "Color Explorer",
+    "description": "Solution to all Namaste Dev problems with all test cases passed.",
+    "image": "https://do6gp1uxl3luu.cloudfront.net/question-gif/colorExplorer.gif",
+    "tags": ["React JS"],
+    "category": ["Easy"],
+    "link": "/namastedev/a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"
+  }
+]
