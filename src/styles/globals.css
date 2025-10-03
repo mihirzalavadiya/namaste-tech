@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import './componentsStyles/layout.css';
+@import './componentsStyles/header.css';
+@import './componentsStyles/home.css';
+@import './componentsStyles/namstedev.css';
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,6 +19,9 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
 }
 
 body {
@@ -28,6 +36,9 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Ubuntu Mono', monospace !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
 }
 
 a {
