@@ -1,19 +1,28 @@
 import { useRouter } from 'next/router';
-import projects from '../src/utils/namsteDevQuestions.json';
-import projectDetails from '../src/utils/namsteDevQuestionDetails.json';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getQuestionDetailsById } from '../lib/db';
+import { useSelector } from 'react-redux';
 
 export default function NamasteDevDetail() {
   const [copied, setCopied] = useState(false);
+  const [detail, setDetail] = useState(null);
   const router = useRouter();
+  const questions = useSelector((state) => state.namasteDevQuestions.questions);
   const { id } = router.query;
 
-  if (!id) return <p className="loading">Loading...</p>;
+  if (!id && !questions) return <p className="loading">Loading...</p>;
 
-  const summary = projects.find((p) => p.id === id);
-  const detail = projectDetails[id];
+  const summary = questions?.length && questions.find((p) => p.id === id);
+
+  useEffect(() => {
+    if (id) {
+      getQuestionDetailsById(id).then((data) => {
+        setDetail(data);
+      });
+    }
+  }, [id]);
 
   if (!summary) return <p className="loading">Project not found</p>;
 

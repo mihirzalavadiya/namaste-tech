@@ -5,8 +5,9 @@
 @import './componentsStyles/namstedev.css';
 @import './componentsStyles/projectDetail.css';
 @import './componentsStyles/blog.css';
+@import './componentsStyles/loader.css';
 
-:root  {
+:root {
   --background: #ffffff;
   --foreground: #171717;
 }

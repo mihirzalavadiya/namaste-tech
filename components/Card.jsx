@@ -39,7 +39,7 @@ const Card = ({ projects, isDescription = true }) => {
               )}
 
               <div className="card-tags">
-                {project.tags.map((tag, index) => (
+                {project?.tags?.map((tag, index) => (
                   <span key={index} className="tag">
                     {tag}
                   </span>
@@ -47,7 +47,7 @@ const Card = ({ projects, isDescription = true }) => {
               </div>
               {project?.compnies && (
                 <div className="card-tags">
-                  {project.compnies.map((tag, index) => (
+                  {project?.compnies?.map((tag, index) => (
                     <span key={index} className="compnies-tag">
                       {tag}
                     </span>
