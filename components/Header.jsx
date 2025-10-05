@@ -31,14 +31,14 @@ const Header = () => {
                 Home
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 href="/about"
                 className={`nav-link ${isActive('/about') ? 'active' : ''}`}
               >
                 About
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 href="/namastedev"
@@ -82,7 +82,7 @@ const Header = () => {
               Home
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               href="/about"
               className={`mobile-nav-link ${
@@ -92,7 +92,7 @@ const Header = () => {
             >
               About
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link
               href="/namastedev"
