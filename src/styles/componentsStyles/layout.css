@@ -15,7 +15,7 @@ body {
 /* Main Layout */
 .layout {
   min-height: 100vh;
-  background-color: #000000;
+  background-color: #000000f2;
   position: relative;
   overflow: hidden;
 }
