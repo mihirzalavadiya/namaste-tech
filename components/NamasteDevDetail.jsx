@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 export default function NamasteDevDetail() {
   const [copied, setCopied] = useState(false);
   const [detail, setDetail] = useState(null);
+  const [activeTab, setActiveTab] = useState(0);
   const router = useRouter();
   const questions = useSelector((state) => state.namasteDevQuestions.questions);
   const { id } = router.query;
@@ -31,10 +32,13 @@ export default function NamasteDevDetail() {
     : detail?.code || '';
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(code).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+    if (detail?.files?.length) {
+      const currentCode = detail.files[activeTab].code;
+      navigator.clipboard.writeText(currentCode).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      });
+    }
   };
 
   const backButton = () => {
@@ -78,12 +82,27 @@ export default function NamasteDevDetail() {
         </div>
       </div>
 
-      {code && (
+      {detail?.files && detail.files.length > 0 && (
         <div className="right-container">
-          <h2>Code</h2>
+          <h2>Code Files</h2>
+
+          {/* Tabs */}
+          <div className="tabs">
+            {detail.files.map((file, index) => (
+              <button
+                key={index}
+                className={`tab-btn ${index === activeTab ? 'active' : ''}`}
+                onClick={() => setActiveTab(index)}
+              >
+                {file.filename}
+              </button>
+            ))}
+          </div>
+
+          {/* Code View */}
           <div className="code-block">
             <SyntaxHighlighter
-              language="javascript"
+              language={detail.files[activeTab].language || 'javascript'}
               style={oneDark}
               showLineNumbers
               wrapLines
@@ -92,13 +111,11 @@ export default function NamasteDevDetail() {
                 padding: '1rem 1rem 2rem 1rem',
                 fontSize: '14px',
                 overflowY: 'auto',
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
               }}
-              className="project-detail-container"
             >
-              {code}
+              {detail.files[activeTab].code}
             </SyntaxHighlighter>
+
             <button onClick={handleCopy} className="code-block-copy-button">
               {copied ? 'Copied!' : 'Copy'}
             </button>
