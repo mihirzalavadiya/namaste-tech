@@ -22,6 +22,9 @@ const Card = ({ projects, isDescription = true }) => {
                 />
               )}
               <div className="card-overlay"></div>
+              {project?.problemNo && (
+                <div className="problem-number">#{project.problemNo}</div>
+              )}
             </div>
 
             <div className="card-content">

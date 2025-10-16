@@ -50,10 +50,33 @@
   margin-bottom: 16px;
 }
 
-.left-container > .project-header > img {
+.left-container > .project-header > .detail-image-wrapper > img {
   width: 100%;
   border-radius: 8px;
   margin-bottom: 16px;
+}
+
+.detail-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.left-container > .project-header > .detail-image-wrapper > .problem-number {
+  position: absolute;
+  bottom: 30px;
+  right: 12px;
+  background: rgba(160, 96, 250, 0.15);
+  color: #a060fa;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(160, 96, 250, 0.3);
 }
 
 .left-container > .project-header > p {

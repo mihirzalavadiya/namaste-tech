@@ -23,6 +23,14 @@ const HomePage = () => {
       tags: ['React', 'Next.js', 'JavaScript'],
       link: '/blog',
     },
+    {
+      id: 3,
+      title: 'LeetCode',
+      description: 'Solutions to various LeetCode problems in JavaScript.',
+      image: 'https://leetcode.com/static/images/LeetCode_Sharing.png',
+      tags: ['JavaScript'],
+      link: '/leetcode',
+    },
   ];
 
   return (

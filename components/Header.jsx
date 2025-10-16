@@ -57,6 +57,14 @@ const Header = () => {
                 Blogs
               </Link>
             </li>
+            <li>
+              <Link
+                href="/leetcode"
+                className={`nav-link ${isActive('/leetcode') ? 'active' : ''}`}
+              >
+                LeetCode
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -111,6 +119,17 @@ const Header = () => {
               onClick={toggleMobileMenu}
             >
               Blogs
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/leetcode"
+              className={`mobile-nav-link ${
+                isActive('/leetcode') ? 'active' : ''
+              }`}
+              onClick={toggleMobileMenu}
+            >
+              LeetCode
             </Link>
           </li>
         </ul>
