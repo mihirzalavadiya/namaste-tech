@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import { getLeetCodeQuestionDetailsById } from '../lib/db';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { RiShareBoxFill } from 'react-icons/ri';
+import Link from 'next/link';
 
 const LeetCodeDetails = () => {
   const [copied, setCopied] = useState(false);
@@ -52,7 +54,19 @@ const LeetCodeDetails = () => {
       </div>
       <div className="left-container">
         <div className="project-header">
-          <h1>{summary.title}</h1>
+          <h1>
+            {summary.title}{' '}
+            {detail?.questionurl && (
+              <Link
+                href={detail.questionurl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="arrow-link"
+              >
+                <RiShareBoxFill className="arrow-icon-3d" />
+              </Link>
+            )}
+          </h1>
           {summary.image && (
             <div className="detail-image-wrapper">
               <img

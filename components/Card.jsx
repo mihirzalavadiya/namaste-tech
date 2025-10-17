@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import React from 'react';
 
-const Card = ({ projects, isDescription = true }) => {
+const Card = ({ projects, isDescription = true, isBlog = false }) => {
   return (
     <div className="projects-grid">
       {projects.map((project) => (
-        <Link href={project.link || '#'} key={project.id}>
+        <Link
+          href={project.link || '#'}
+          key={project.id}
+          target={isBlog ? '_blank' : '_self'}
+        >
           <div key={project.id} className="project-card">
             <div className="card-image-wrapper">
               {project?.image ? (

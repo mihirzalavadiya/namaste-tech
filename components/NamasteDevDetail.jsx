@@ -4,6 +4,8 @@ import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import { useEffect, useState } from 'react';
 import { getQuestionDetailsById } from '../lib/db';
 import { useSelector } from 'react-redux';
+import { RiShareBoxFill } from 'react-icons/ri';
+import Link from 'next/link';
 
 export default function NamasteDevDetail() {
   const [copied, setCopied] = useState(false);
@@ -52,8 +54,28 @@ export default function NamasteDevDetail() {
       </div>
       <div className="left-container">
         <div className="project-header">
-          <h1>{summary.title}</h1>
-          {summary.image && <img src={summary.image} alt={summary.title} />}
+          <h1>
+            {summary.title}{' '}
+            {detail?.questionurl && (
+              <Link
+                href={detail.questionurl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="arrow-link"
+              >
+                <RiShareBoxFill className="arrow-icon-3d" />
+              </Link>
+            )}
+          </h1>
+          {summary.image && (
+            <div className="detail-image-wrapper">
+              <img
+                src={summary.image}
+                alt={summary.title}
+                className="detail-image"
+              />
+            </div>
+          )}
           <p>
             {detail?.problem.split('\r\n').map((line, index) => (
               <span key={index}>

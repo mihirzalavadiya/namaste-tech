@@ -48,6 +48,28 @@
   font-weight: 700;
   color: #60a5fa;
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.left-container > .project-header > h1 > .arrow-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 12px;
+}
+
+.arrow-icon-3d {
+  color: #a060fa;
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.arrow-icon-3d:hover {
+  transform: translateY(-2px) scale(1.1);
+  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .left-container > .project-header > .detail-image-wrapper > img {
