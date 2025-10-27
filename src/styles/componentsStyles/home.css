@@ -18,7 +18,7 @@
 
 .section-subtitle {
   font-size: 18px;
-  color: #94a3b8;
+  color: #646464;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -30,17 +30,35 @@
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  /* background: rgba(255, 255, 255, 0.03); */
+  /* border: 1px solid rgba(255, 255, 255, 0.08); */
+  border-radius: 2px;
   overflow: hidden;
   transition: all 0.4s ease;
   cursor: pointer;
 }
 
+.project-card-0,
+.project-card-blue {
+  background-color: var(--color-accent-blue-muted);
+  border: 1px solid var(--color-accent-blue-dark);
+}
+
+.project-card-1,
+.project-card-yellow {
+  background-color: var(--color-accent-yellow);
+  border: 1px solid var(--color-accent-yellow-dark);
+}
+
+.project-card-2,
+.project-card-purple {
+  background-color: var(--color-primary-muted);
+  border: 1px solid var(--color-primary-text);
+}
+
 .project-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(255, 255, 255, 0.15);
+  /* border-color: rgba(255, 255, 255, 0.15); */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -56,14 +74,14 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
-  background: rgba(160, 96, 250, 0.15);
-  color: #a060fa;
-  font-weight: 600;
+  background: var(--color-primary-light);
+  color: var(--color-primary-text);
+  font-weight: 600 !important;
   font-size: 14px;
   padding: 4px 10px;
   border-radius: 6px;
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(160, 96, 250, 0.3);
+  border: 1px solid var(--color-primary-text);
 }
 
 .card-image {
@@ -80,7 +98,7 @@
 .blog-date {
   display: block;
   font-size: 14px;
-  color: #60a5fa;
+  color: var(--color-accent-yellow-dark);
 }
 
 .card-overlay {
@@ -109,15 +127,27 @@
 .card-title {
   font-size: 22px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--color-black);
   margin-bottom: 12px;
 }
 
 .card-description {
   font-size: 15px;
-  color: #94a3b8;
   line-height: 1.6;
   margin-bottom: 20px;
+}
+
+.card-description-0,
+.card-description-blue {
+  color: var(--color-accent-blue-dark);
+}
+.card-description-1,
+.card-description-yellow {
+  color: var(--color-accent-yellow-dark);
+}
+.card-description-2,
+.card-description-purple {
+  color: var(--color-primary-text);
 }
 
 .card-tags {
@@ -128,33 +158,66 @@
 }
 
 .tag {
-  background: rgba(59, 130, 246, 0.1);
-  color: #60a5fa;
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 12px;
-  font-weight: 500;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  font-weight: bold !important;
+}
+
+.tag-0,
+.tag-blue {
+  background-color: var(--color-accent-blue-light);
+  color: var(--color-accent-blue-dark);
+  border: 1px solid var(--color-accent-blue-dark);
+}
+
+.tag-1,
+.tag-yellow {
+  background-color: var(--color-accent-yellow-light);
+  color: var(--color-accent-yellow-dark);
+  border: 1px solid var(--color-accent-yellow-dark);
+}
+
+.tag-2,
+.tag-purple {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-text);
+  border: 1px solid var(--color-primary-text);
 }
 
 .compnies-tag {
-  background: rgba(59, 130, 246, 0.1);
-  color: #a060fa;
+  background: var(--color-primary-light);
+  color: var(--color-primary-text);
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 12px;
-  font-weight: 500;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  font-weight: bold !important;
+  border: 1px solid var(--color-primary-text);
 }
 
 .question-category {
-  background: rgba(59, 130, 246, 0.1);
-  color: #60fa68;
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 12px;
-  font-weight: 500;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  font-weight: bold !important;
+}
+
+.question-category-easy {
+  background: var(--color-accent-green-light);
+  color: var(--color-accent-green-dark);
+  border: 1px solid var(--color-accent-green-dark);
+}
+
+.question-category-medium {
+  background: var(--color-accent-yellow-light);
+  color: var(--color-accent-yellow-dark);
+  border: 1px solid var(--color-accent-yellow-dark);
+}
+
+.question-category-hard {
+  background: var(--color-accent-red-light);
+  color: var(--color-accent-red-dark);
+  border: 1px solid var(--color-accent-red-dark);
 }
 
 .card-header {

@@ -1,7 +1,7 @@
 .header {
   position: fixed;
   top: 0;
-  background-color: #000000f2;
+  background-color: var(--color-white);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
@@ -19,15 +19,15 @@
 }
 
 .logo {
-  color: #ffffff;
+  color: var(--color-accent-green-dark);
   font-size: 24px;
-  font-weight: bold;
+  font-weight: bold !important;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .logo:hover {
-  color: #60a5fa;
+  color: var(--color-accent-blue-dark);
 }
 
 .nav {
@@ -44,9 +44,9 @@
 }
 
 .nav-link {
-  color: #d1d5db;
+  color: #646464;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: bold !important;
   padding: 8px 16px;
   transition: color 0.3s ease;
   position: relative;
@@ -59,14 +59,26 @@
   left: 16px;
   right: 16px;
   height: 2px;
-  background-color: #60a5fa;
+  background-color: var(--color-accent-green-dark);
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease;
 }
 
+.nav-link-blue::after {
+  background-color: var(--color-accent-blue-dark);
+}
+
+.nav-link-purple::after {
+  background-color: var(--color-primary-text);
+}
+
+.nav-link-yellow::after {
+  background-color: var(--color-accent-yellow-dark);
+}
+
 .nav-link:hover {
-  color: #ffffff;
+  color: #000000;
 }
 
 .nav-link:hover::after {
@@ -74,7 +86,19 @@
 }
 
 .nav-link.active {
-  color: #60a5fa;
+  color: var(--color-accent-green-dark);
+}
+
+.nav-link.active-blue {
+  color: var(--color-accent-blue-dark);
+}
+
+.nav-link.active-purple {
+  color: var(--color-primary-text);
+}
+
+.nav-link.active-yellow {
+  color: var(--color-accent-yellow-dark);
 }
 
 .nav-link.active::after {
@@ -86,7 +110,7 @@
   display: none;
   background: none;
   border: none;
-  color: #ffffff;
+  color: #646464;
   font-size: 24px;
   cursor: pointer;
   padding: 8px;
@@ -105,7 +129,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.98);
+  background-color: var(--color-white);
   backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 20px 24px;
@@ -126,7 +150,7 @@
 }
 
 .mobile-nav-link {
-  color: #d1d5db;
+  color: #646464;
   text-decoration: none;
   font-weight: 500;
   padding: 12px 16px;
@@ -136,12 +160,12 @@
 }
 
 .mobile-nav-link:hover {
-  color: #ffffff;
+  color: #000000;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 .mobile-nav-link.active {
-  color: #60a5fa;
+  color: var(--color-accent-blue-dark);
   background-color: rgba(96, 165, 250, 0.1);
 }
 

@@ -1,70 +1,98 @@
 import Link from 'next/link';
 import React from 'react';
 
-const Card = ({ projects, isDescription = true, isBlog = false }) => {
+const Card = ({
+  projects,
+  isDescription = true,
+  isBlog = false,
+  fixedColor = null,
+}) => {
   return (
     <div className="projects-grid">
-      {projects.map((project) => (
-        <Link
-          href={project.link || '#'}
-          key={project.id}
-          target={isBlog ? '_blank' : '_self'}
-        >
-          <div key={project.id} className="project-card">
-            <div className="card-image-wrapper">
-              {project?.image ? (
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="card-image"
-                />
-              ) : (
-                <img
-                  src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop"
-                  alt="Namaste Dev"
-                  className="card-image"
-                />
-              )}
-              <div className="card-overlay"></div>
-              {project?.problemNo && (
-                <div className="problem-number">#{project.problemNo}</div>
-              )}
-            </div>
+      {projects.map((project, index) => {
+        const colorClass = fixedColor ? fixedColor : index;
+        const projectCategory =
+          project?.category?.[0] == 'Easy'
+            ? 'easy'
+            : project?.category?.[0] == 'Medium'
+            ? 'medium'
+            : project?.category?.[0] == 'Hard'
+            ? 'hard'
+            : '';
 
-            <div className="card-content">
-              <div className="card-header">
-                <h3 className="card-title">{project.title}</h3>
-                {project?.category?.length > 0 && (
-                  <span className="question-category">
-                    {project?.category[0]}
-                  </span>
+        return (
+          <Link
+            href={project.link || '#'}
+            key={project.id}
+            target={isBlog ? '_blank' : '_self'}
+          >
+            <div className={`project-card project-card-${colorClass}`}>
+              <div className="card-image-wrapper">
+                {project?.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="card-image"
+                  />
+                ) : (
+                  <img
+                    src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop"
+                    alt="Namaste Dev"
+                    className="card-image"
+                  />
+                )}
+                <div className="card-overlay"></div>
+                {project?.problemNo && (
+                  <div className="problem-number">#{project.problemNo}</div>
                 )}
               </div>
-              {project?.date && <div className="blog-date">{project.date}</div>}
-              {isDescription && (
-                <p className="card-description">{project.description}</p>
-              )}
 
-              <div className="card-tags">
-                {project?.tags?.map((tag, index) => (
-                  <span key={index} className="tag">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              {project?.compnies && (
+              <div className="card-content">
+                <div className="card-header">
+                  <h3 className="card-title">{project.title}</h3>
+                  {project?.category?.length > 0 && (
+                    <span
+                      className={`question-category question-category-${projectCategory}`}
+                    >
+                      {project?.category[0]}
+                    </span>
+                  )}
+                </div>
+
+                {project?.date && (
+                  <div className="blog-date">{project.date}</div>
+                )}
+
+                {isDescription && (
+                  <p
+                    className={`card-description card-description-${colorClass}`}
+                  >
+                    {project.description}
+                  </p>
+                )}
+
                 <div className="card-tags">
-                  {project?.compnies?.map((tag, index) => (
-                    <span key={index} className="compnies-tag">
+                  {project?.tags?.map((tag, tagIndex) => (
+                    <span key={tagIndex} className={`tag tag-${colorClass}`}>
                       {tag}
                     </span>
                   ))}
                 </div>
-              )}
+
+                {project?.compnies && (
+                  <div className="card-tags">
+                    {project?.compnies?.map((tag, index) => (
+                      <span key={index} className="compnies-tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        );
+      })}
     </div>
   );
 };

@@ -43,7 +43,9 @@ const Header = () => {
               <Link
                 href="/namastedev"
                 className={`nav-link ${
-                  isActive('/namastedev') ? 'active' : ''
+                  isActive('/namastedev')
+                    ? 'active active-blue nav-link-blue'
+                    : ''
                 }`}
               >
                 Namaste Dev
@@ -52,7 +54,11 @@ const Header = () => {
             <li>
               <Link
                 href="/blog"
-                className={`nav-link ${isActive('/blog') ? 'active' : ''}`}
+                className={`nav-link ${
+                  isActive('/blog')
+                    ? 'active active-yellow nav-link-yellow'
+                    : ''
+                }`}
               >
                 Blogs
               </Link>
@@ -60,7 +66,11 @@ const Header = () => {
             <li>
               <Link
                 href="/leetcode"
-                className={`nav-link ${isActive('/leetcode') ? 'active' : ''}`}
+                className={`nav-link ${
+                  isActive('/leetcode')
+                    ? 'active active-purple nav-link-purple'
+                    : ''
+                }`}
               >
                 LeetCode
               </Link>

@@ -34,7 +34,7 @@ const BlogPage = () => {
           <h1 className="blog-section-title">Blogs</h1>
         </div>
 
-        <Card projects={blogData} isBlog={true} />
+        <Card projects={blogData} isBlog={true} fixedColor="yellow" />
       </div>
     </>
   );

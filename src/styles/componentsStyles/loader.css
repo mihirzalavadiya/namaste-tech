@@ -32,7 +32,7 @@
   width: 64px;
   height: 64px;
   border: 4px solid rgba(96, 165, 250, 0.1);
-  border-top-color: #60a5fa;
+  border-top-color: var(--color-accent-blue-muted);
   border-radius: 50%;
   animation: loader-spin 1s linear infinite;
 }
@@ -57,7 +57,7 @@
 .loader-dot {
   width: 12px;
   height: 12px;
-  background: #60a5fa;
+  background: var(--color-accent-blue-muted);
   border-radius: 50%;
   animation: loader-bounce 1.4s infinite ease-in-out both;
 }
@@ -91,7 +91,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  border: 2px solid #60a5fa;
+  border: 2px solid var(--color-accent-blue-muted);
   border-radius: 50%;
   animation: loader-pulse 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
@@ -143,7 +143,7 @@
 .loader-bar {
   width: 4px;
   height: 40px;
-  background: #60a5fa;
+  background: var(--color-accent-blue-muted);
   border-radius: 2px;
   animation: loader-bars 1s ease-in-out infinite;
 }
@@ -184,7 +184,7 @@
     from 0deg,
     transparent 0deg,
     transparent 270deg,
-    #60a5fa 270deg,
+    var(--color-accent-blue-muted) ; 270deg,
     #8b5cf6 360deg
   );
   animation: loader-spin 1s linear infinite;
@@ -207,7 +207,7 @@
   width: 64px;
   height: 64px;
   border: 4px solid rgba(96, 165, 250, 0.1);
-  border-top-color: #60a5fa;
+  border-top-color: var(--color-accent-blue-muted);
   border-radius: 50%;
   animation: spinner-spin 1s linear infinite;
 }
@@ -250,7 +250,7 @@
 .dot {
   width: 12px;
   height: 12px;
-  background: #60a5fa;
+  background: var(--color-accent-blue-muted);
   border-radius: 50%;
   animation: dot-bounce 1.4s infinite ease-in-out both;
 }
@@ -299,7 +299,7 @@
 .bar {
   width: 4px;
   height: 40px;
-  background: #60a5fa;
+  background: var(--color-accent-blue-muted);
   border-radius: 2px;
   animation: bar-animation 1s ease-in-out infinite;
 }

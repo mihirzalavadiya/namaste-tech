@@ -28,7 +28,11 @@ const LeetCode = () => {
   return (
     <>
       <div className="namstedev-container">
-        <Card projects={questionsData} isDescription={false} />
+        <Card
+          projects={questionsData}
+          isDescription={false}
+          fixedColor="purple"
+        />
       </div>
     </>
   );

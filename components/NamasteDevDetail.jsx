@@ -14,6 +14,9 @@ export default function NamasteDevDetail() {
   const router = useRouter();
   const questions = useSelector((state) => state.namasteDevQuestions.questions);
   const { id } = router.query;
+  const { pathname } = router;
+
+  const colorClass = pathname.includes('/namastedev/') ? 'blue' : '';
 
   if (!id && !questions) return <p className="loading">Loading...</p>;
 
@@ -49,10 +52,10 @@ export default function NamasteDevDetail() {
 
   return (
     <div className="project-detail-container">
-      <div className="back-button">
+      <div className={`back-button back-button-${colorClass}`}>
         <button onClick={backButton}>&larr; Back</button>
       </div>
-      <div className="left-container">
+      <div className={`left-container left-container-${colorClass}`}>
         <div className="project-header">
           <h1>
             {summary.title}{' '}
@@ -61,7 +64,7 @@ export default function NamasteDevDetail() {
                 href={detail.questionurl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="arrow-link"
+                className={`arrow-link arrow-link-${colorClass}`}
               >
                 <RiShareBoxFill className="arrow-icon-3d" />
               </Link>
@@ -85,7 +88,9 @@ export default function NamasteDevDetail() {
             ))}
           </p>
           {detail?.examples && detail.examples.length > 0 && (
-            <section className="examples-section">
+            <section
+              className={`examples-section examples-section-${colorClass}`}
+            >
               <h2>Examples</h2>
               <ul className="examples-list">
                 {detail.examples.map((ex, i) => (
@@ -105,7 +110,7 @@ export default function NamasteDevDetail() {
       </div>
 
       {detail?.files && detail.files.length > 0 && (
-        <div className="right-container">
+        <div className={`right-container right-container-${colorClass}`}>
           <h2>Code Files</h2>
 
           {/* Tabs */}

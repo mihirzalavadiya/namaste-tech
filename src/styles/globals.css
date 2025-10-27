@@ -10,6 +10,37 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Base colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-gray: #646464;
+  --color-light-gray: #f1f1f1;
+
+  /* Brand / Primary */
+  --color-primary: #5f2ff8; /* bright violet / brand color */
+  --color-primary-light: #f2ecf3; /* light lavender background */
+  --color-primary-muted: #e1d8e3; /* soft lavender gray */
+  --color-primary-text: #9a889e; /* text shade for lavender theme */
+
+  /* Accent (Blueish tones) */
+  --color-accent-blue-light: #c1e1f0;
+  --color-accent-blue-muted: #c0dae5;
+  --color-accent-blue-dark: #60819e;
+
+  /* Accent (Yellow / Gold tones) */
+  --color-accent-yellow-light: #feeebc;
+  --color-accent-yellow: #e9d8a3;
+  --color-accent-yellow-dark: #957c25;
+
+  /* Accent (Greenish tones) */
+  --color-accent-green-light: #e4f0df;
+  --color-accent-green: #cad4c0;
+  --color-accent-green-dark: #7d886f;
+
+  /* Accent (Red tones) ❤️ */
+  --color-accent-red-light: #fbe3e3;
+  --color-accent-red: #e99a9a;
+  --color-accent-red-dark: #b94b4b;
 }
 
 @media (prefers-color-scheme: dark) {
