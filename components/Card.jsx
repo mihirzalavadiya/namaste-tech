@@ -1,96 +1,88 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
+import { chipClass, diffClass, BLUR_DATA_URL } from '../lib/ui';
 
-const Card = ({
-  projects,
-  isDescription = true,
-  isBlog = false,
-  fixedColor = null,
-}) => {
+const FALLBACK_IMAGE =
+  'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop';
+
+const CardMedia = ({ project, index }) => (
+  <div className="card-media">
+    <Image
+      src={project?.image || FALLBACK_IMAGE}
+      alt={project.title || 'NamasteTech'}
+      fill
+      style={{ objectFit: 'cover' }}
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      placeholder="blur"
+      blurDataURL={BLUR_DATA_URL}
+      priority={index === 0}
+    />
+    {project?.problemNo && <span className="card-num">#{project.problemNo}</span>}
+  </div>
+);
+
+const Card = ({ projects = [], isBlog = false, accent }) => {
   return (
-    <div className="projects-grid">
+    <div className="card-grid">
       {projects.map((project, index) => {
-        const colorClass = fixedColor ? fixedColor : index;
-        const projectCategory =
-          project?.category?.[0] == 'Easy'
-            ? 'easy'
-            : project?.category?.[0] == 'Medium'
-            ? 'medium'
-            : project?.category?.[0] == 'Hard'
-            ? 'hard'
-            : '';
+        const difficulty = project?.category?.[0];
+        const lang = project?.tags?.[0];
+
+        if (isBlog) {
+          return (
+            <div
+              className="card"
+              key={project.id ?? index}
+              style={accent ? { '--accent': accent } : undefined}
+            >
+              <CardMedia project={project} index={index} />
+              <a
+                className="card-body"
+                href={project.link || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <h3 className="card-title">{project.title}</h3>
+                <div className="card-foot">
+                  <span className="card-date">{project.date}</span>
+                  <span className="card-read">read ↗</span>
+                </div>
+              </a>
+            </div>
+          );
+        }
 
         return (
-          <Link
-            href={project.link || '#'}
-            key={project.id}
-            target={isBlog ? '_blank' : '_self'}
+          <div
+            className="card"
+            key={project.id ?? index}
+            style={accent ? { '--accent': accent } : undefined}
           >
-            <div className={`project-card project-card-${colorClass}`}>
-              <div className="card-image-wrapper">
-                {project?.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="card-image"
-                  />
-                ) : (
-                  <img
-                    src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop"
-                    alt="Namaste Dev"
-                    className="card-image"
-                  />
-                )}
-                <div className="card-overlay"></div>
-                {project?.problemNo && (
-                  <div className="problem-number">#{project.problemNo}</div>
+            <CardMedia project={project} index={index} />
+            <Link className="card-body" href={project.link || '#'}>
+              <div className="card-body-head">
+                <h3 className="card-title">{project.title}</h3>
+                {difficulty && (
+                  <span className={diffClass(difficulty)}>{difficulty}</span>
                 )}
               </div>
-
-              <div className="card-content">
-                <div className="card-header">
-                  <h3 className="card-title">{project.title}</h3>
-                  {project?.category?.length > 0 && (
-                    <span
-                      className={`question-category question-category-${projectCategory}`}
-                    >
-                      {project?.category[0]}
-                    </span>
-                  )}
+              {lang && (
+                <div className="card-chips">
+                  <span className={chipClass(lang)}>{lang}</span>
                 </div>
-
-                {project?.date && (
-                  <div className="blog-date">{project.date}</div>
-                )}
-
-                {isDescription && (
-                  <p
-                    className={`card-description card-description-${colorClass}`}
-                  >
-                    {project.description}
-                  </p>
-                )}
-
-                <div className="card-tags">
-                  {project?.tags?.map((tag, tagIndex) => (
-                    <span key={tagIndex} className={`tag tag-${colorClass}`}>
-                      {tag}
+              )}
+              {project?.compnies?.length > 0 && (
+                <div className="card-companies">
+                  {project.compnies.map((co, i) => (
+                    <span key={i} className="chip-company">
+                      {co}
                     </span>
                   ))}
                 </div>
-
-                {project?.compnies && (
-                  <div className="card-tags">
-                    {project?.compnies?.map((tag, index) => (
-                      <span key={index} className="compnies-tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          </Link>
+              )}
+            </Link>
+          </div>
         );
       })}
     </div>

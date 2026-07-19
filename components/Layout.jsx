@@ -1,57 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Header from './Header';
 
-const Layout = ({ children }) => {
-  const [stars, setStars] = useState([]);
-
-  useEffect(() => {
-    const generateStars = () => {
-      const starArray = [];
-      const numStars = 150;
-
-      for (let i = 0; i < numStars; i++) {
-        const star = {
-          id: i,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
-          size: Math.random() * 3 + 1,
-          opacity: Math.random() * 0.8 + 0.2,
-          twinkleDelay: Math.random() * 5,
-          duration: 2 + Math.random() * 3,
-        };
-        starArray.push(star);
-      }
-      setStars(starArray);
-    };
-
-    generateStars();
-  }, []);
-
+const Layout = ({ children, count }) => {
   return (
-    <div className="layout">
-      <div className="starfield">
-        {stars.map((star) => (
-          <div
-            key={star.id}
-            className="star"
-            style={{
-              left: `${star.x}%`,
-              top: `${star.y}%`,
-              width: `${star.size}px`,
-              height: `${star.size}px`,
-              opacity: star.opacity,
-              animationDelay: `${star.twinkleDelay}s`,
-              animationDuration: `${star.duration}s`,
-            }}
-          />
-        ))}
-      </div>
-      <div className="grid-overlay" />
-
-      <div className="content">
-        <Header />
-        {children}
-      </div>
+    <div className="app">
+      <Header />
+      <main className="site-main">{children}</main>
+      <footer className="status-bar">
+        <span className="st-branch">⎇ main</span>
+        {typeof count === 'number' && (
+          <span className="st-count">
+            <span className="st-dot" />
+            {count} solutions
+          </span>
+        )}
+        <span className="st-push">UTF-8</span>
+        <span>LF</span>
+        <span className="st-lang">JavaScript</span>
+        <span>namaste 🙏</span>
+      </footer>
     </div>
   );
 };

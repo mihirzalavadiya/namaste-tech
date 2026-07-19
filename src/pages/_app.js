@@ -1,11 +1,14 @@
 import '@/styles/globals.css';
-import { Provider } from 'react-redux';
-import appStore from '../redux/appStore';
+import Head from 'next/head';
 
 export default function App({ Component, pageProps }) {
   return (
-    <Provider store={appStore}>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Component {...pageProps} />
-    </Provider>
+    </>
   );
 }

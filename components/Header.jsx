@@ -1,150 +1,72 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import SearchOverlay from './SearchOverlay';
+
+const NAV = [
+  { href: '/', label: 'Home', dot: '#ff8a4c' },
+  { href: '/namastedev', label: 'Namaste Dev', dot: '#58a6ff' },
+  { href: '/blog', label: 'Blogs', dot: '#ff7ac6' },
+  { href: '/leetcode', label: 'LeetCode', dot: '#e3b341' },
+];
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
+  const [searchOpen, setSearchOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const isActive = (href) =>
+    href === '/'
+      ? router.pathname === '/'
+      : router.pathname === href || router.pathname.startsWith(`${href}/`);
 
-  // Helper function: check active route
-  const isActive = (path) => router.pathname === path;
+  useEffect(() => {
+    const onKey = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen((o) => !o);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   return (
-    <header className="header">
-      <div className="header-container">
-        <Link href="/" className="logo">
-          NamsteTech
+    <>
+      <header className="site-header">
+        <Link href="/" className="brand">
+          <span className="brand-mark">न</span>
+          <span className="brand-name">
+            namaste<span>.tech</span>
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="nav">
-          <ul className="nav-list">
-            <li>
-              <Link
-                href="/"
-                className={`nav-link ${isActive('/') ? 'active' : ''}`}
-              >
-                Home
-              </Link>
-            </li>
-            {/* <li>
-              <Link
-                href="/about"
-                className={`nav-link ${isActive('/about') ? 'active' : ''}`}
-              >
-                About
-              </Link>
-            </li> */}
-            <li>
-              <Link
-                href="/namastedev"
-                className={`nav-link ${
-                  isActive('/namastedev')
-                    ? 'active active-blue nav-link-blue'
-                    : ''
-                }`}
-              >
-                Namaste Dev
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/blog"
-                className={`nav-link ${
-                  isActive('/blog')
-                    ? 'active active-yellow nav-link-yellow'
-                    : ''
-                }`}
-              >
-                Blogs
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/leetcode"
-                className={`nav-link ${
-                  isActive('/leetcode')
-                    ? 'active active-purple nav-link-purple'
-                    : ''
-                }`}
-              >
-                LeetCode
-              </Link>
-            </li>
-          </ul>
+          {NAV.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`nav-tab ${isActive(item.href) ? 'active' : ''}`}
+            >
+              <span
+                className="nav-dot"
+                style={{ background: item.dot }}
+              />
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
-          className="mobile-menu-btn"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle mobile menu"
+          className="search-btn"
+          onClick={() => setSearchOpen(true)}
+          aria-label="Search"
         >
-          {isMobileMenuOpen ? '✕' : '☰'}
+          search <span className="kbd">⌘K</span>
         </button>
-      </div>
+      </header>
 
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-        <ul className="mobile-nav-list">
-          <li>
-            <Link
-              href="/"
-              className={`mobile-nav-link ${isActive('/') ? 'active' : ''}`}
-              onClick={toggleMobileMenu}
-            >
-              Home
-            </Link>
-          </li>
-          {/* <li>
-            <Link
-              href="/about"
-              className={`mobile-nav-link ${
-                isActive('/about') ? 'active' : ''
-              }`}
-              onClick={toggleMobileMenu}
-            >
-              About
-            </Link>
-          </li> */}
-          <li>
-            <Link
-              href="/namastedev"
-              className={`mobile-nav-link ${
-                isActive('/namastedev') ? 'active' : ''
-              }`}
-              onClick={toggleMobileMenu}
-            >
-              Namaste Dev
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/blog"
-              className={`mobile-nav-link ${isActive('/blog') ? 'active' : ''}`}
-              onClick={toggleMobileMenu}
-            >
-              Blogs
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/leetcode"
-              className={`mobile-nav-link ${
-                isActive('/leetcode') ? 'active' : ''
-              }`}
-              onClick={toggleMobileMenu}
-            >
-              LeetCode
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </header>
+      {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
+    </>
   );
 };
 
